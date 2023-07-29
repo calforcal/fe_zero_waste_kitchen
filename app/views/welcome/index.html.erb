@@ -1,5 +1,10 @@
-<h1> Welcome To Zero Waste Kitchen </h1>
+<h1 class="title-text"> Welcome To Zero Waste Kitchen </h1>
 
-<%= button_to "Login" %>
-<%= button_to "Sign Up" %>
-<%= button_to "Search Recipes", search_index_path %>
+<% if current_user %>
+  <%= button_to "Your Kitchen", user_path(current_user.id), method: :get %>
+  <%= button_to "Search Recipes", search_index_path %>
+<% else %>
+  <%= button_to "Login", new_user_session_path %>
+  <%= button_to "Sign Up", new_user_session_path %>
+  <%= button_to "Search Recipes", search_index_path %>
+<% end %>
