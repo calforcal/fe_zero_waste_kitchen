@@ -14,14 +14,18 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-sm">
       <% if current_user %>
-        <a class="nav-item nav-link navbar-brand" href="<%= user_path(current_user.id) %>">Kitchen</a>
+        <a class="nav-item nav-link navbar-brand text-dark" href="<%= user_path(current_user.id) %>">Kitchen</a>
       <% else %>
-        <a class="nav-item nav-link navbar-brand" href="<%= root_path %>">Kitchen</a>
+        <a class="nav-item nav-link navbar-brand text-dark" href="<%= root_path %>">Kitchen</a>
       <% end %>
-      
-      <a class="nav-item nav-link navbar-brand" href="<%= search_index_path %>">Search</a>
+
+      <a class="nav-item nav-link navbar-brand text-dark" href="<%= search_index_path %>">Search</a>
+
+      <% if current_user %>
+        <a class="nav-item nav-link navbar-brand text-dark" href="<%= destroy_user_session_path %>">Logout</a>
+      <% end %>
     </nav>
     <%= yield %>
   </body>
