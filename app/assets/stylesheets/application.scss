@@ -12,11 +12,11 @@
  */
 
  // Custom Bootstrap variables must be set or imported *before* importing Bootstrap.
- $primary-color: #008cff; // This sets the primary color to blue.
+//  $primary-color: #000fff; // This sets the primary color to blue.
 
-.title-text {
-  color: $primary-color; /* This sets the primary color to blue. */
-}
+// .title-text {
+//   color: $primary-color; /* This sets the primary color to blue. */
+// }
 
 // Import Bootstrap styles after defining custom variables.
 @import "bootstrap";
