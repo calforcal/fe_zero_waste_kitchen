@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Users::SessionsController < Devise::SessionsController
   # before_action :configure_sign_in_params, only: [:create]
 
@@ -13,10 +11,10 @@ class Users::SessionsController < Devise::SessionsController
   #   super
   # end
 
-  # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    session.clear
+    redirect_to root_path
+  end
 
   def after_sign_out_path(_resource_or_scope)
     new_user_session_path

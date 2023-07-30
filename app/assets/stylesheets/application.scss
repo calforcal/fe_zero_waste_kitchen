@@ -11,21 +11,22 @@
  * It is generally better to create a new file per style scope.
  */
  // Custom Bootstrap variables must be set or imported *before* importing Bootstrap.
- $primary-color:  #478C5C; // This sets the primary color to blue.
+ $primary-color: 	#478C5C; // This sets the primary color to blue.
  $enable-gradients: true;
+
 .title-text {
   color: $primary-color; /* This sets the primary color to dark olive green. */
 }
+
 body {
   margin: 0;
   padding: 0;
   min-height: 100vh;
   background: linear-gradient(180deg, #556B2F, #013A20 );
 }
+
 .navbar {
   background-color: #CDD193
 }
 // Import Bootstrap styles after defining custom variables.
 @import "bootstrap";
-
-
