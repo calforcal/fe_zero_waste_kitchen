@@ -58,7 +58,7 @@ RSpec.describe "landing page", type: :feature do
       visit root_path
   
       click_on "Sign Up"
-      expect(current_path).to eq(new_user_registration_path)
+      expect(current_path).to eq(new_user_session_path)
       end
 
       it "the 'Search Recipes' button routes to the Search page" do
@@ -83,7 +83,7 @@ RSpec.describe "landing page", type: :feature do
       within(".navbar.navbar-expand-sm") do
         expect(page).to have_link("Kitchen")
         expect(page).to have_link("Search")
-        expect(page).to have_link("Logout")
+        expect(page).to have_button("Logout")
       end
 
       expect(page).to have_css(".title-text.text-center.pt-5")
