@@ -72,12 +72,9 @@ RSpec.describe "landing page", type: :feature do
 
   describe "when I visit the landing page as a logged-in user" do
     it "I see the webpage with registered user details" do
-      # FIRST NEED TO LOGIN HERE # current_user = 
       user = FactoryBot.create(:user)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
-      # require 'pry'; binding.pry
       visit root_path
-      # save_and_open_page
       expect(page).to have_css(".navbar.navbar-expand-sm")
       
       within(".navbar.navbar-expand-sm") do
@@ -100,6 +97,46 @@ RSpec.describe "landing page", type: :feature do
 
         expect(page).to_not have_link("Login")
         expect(page).to_not have_link("Sign Up")
+      end
+    end
+
+    describe "navbar" do 
+      it "the 'Kitchen' link routes to the users#show page" do
+        user = FactoryBot.create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit root_path
+  
+        click_on "Kitchen"
+        expect(current_path).to eq(user_path(user.id))
+      end
+
+      it "the 'Search' link routes to the Search Recipes page" do
+        user = FactoryBot.create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit root_path
+  
+        click_on "Search"
+        expect(current_path).to eq(search_index_path)
+      end
+    end
+
+    describe "buttons" do 
+      it "the 'Your Kitchen' button routes to the users#show page" do
+        user = FactoryBot.create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit root_path
+    
+        click_on "Your Kitchen"
+        expect(current_path).to eq(user_path(user.id))
+      end
+
+      it "the 'Search Recipes' button routes to the Search page" do
+        user = FactoryBot.create(:user)
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit root_path
+    
+        click_on "Search Recipes"
+        expect(current_path).to eq(search_index_path)
       end
     end
   end
