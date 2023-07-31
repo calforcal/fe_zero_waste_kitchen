@@ -3,13 +3,11 @@ class UsersController < ApplicationController
   before_action :find_user, only: :show
 
   def show
-    # require 'pry'; binding.pry
     @facade = UserFacade.new(params)
   end
 
   # def create
   #   user_facade = UserFacade.new
-  #   # require 'pry'; binding.pry
   #   new_user_params = { }
 
   #   # Create the user using the facade
