@@ -12,7 +12,6 @@ class UserFacade
   end
 
   def make_recipes(json)
-    # require 'pry'; binding.pry
     json[:data].map do |recipes|
       Recipe.new(recipes)
     end
