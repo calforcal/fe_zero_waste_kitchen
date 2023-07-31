@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :find_recipe_owner, only: :new
 
   def new
-    # require 'pry'; binding.pry
+
   end
 
 private
