@@ -17,7 +17,26 @@ RSpec.describe "user/show page", type: :feature do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit user_path(user.id)
 
-      expect(page).to have_content("HELLO")
+
+      expect(page).to have_css(".title-text.text-center.pt-5")
+
+      within(".title-text.text-center.pt-5") do 
+        expect(page).to have_content("#{user.name}'s Zero Waste Kitchen")
+      end
+
+      expect(page).to have_css(".container.btn-group-toggle.text-center")
+
+      within(".container.btn-group-toggle.text-center") do 
+        expect(page).to have_link("Search Recipes")
+        expect(page).to have_link("Make your own Recipe")
+      end
+
+      expect(page).to have_css(".container-fluid.cookbook-title")
+
+      within(".container-fluid.cookbook-title") do 
+        expect(page).to have_content("#{user.name}'s Cookbook")
+      end
+
       # within(".navbar.navbar-expand-sm") do
       #   expect(page).to have_link("Kitchen")
       #   expect(page).to have_link("Search")
@@ -26,5 +45,25 @@ RSpec.describe "user/show page", type: :feature do
     end
   end
 end
-# <a class="nav-item nav-link navbar-brand text-dark" href="<%= search_index_path %>">Search</a>
+
+
+
+### Move Back to app/views/users/show.html.erb line 19
+# <div class="container-fluid recipes_saved ">
+#   <h2 class="text-center">Saved Recipes</h2>
+#   <ul>
+#     <% @facade.saved_recipes.each do |recipe| %>
+#       <li><%= link_to "#{recipe.name}", user_recipe_path(@user.id) %></li>
+#     <% end %>
+#   </ul>
+# </div>
+
+
+
+
+
+
+
+
+
 
