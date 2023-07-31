@@ -4,10 +4,24 @@ RSpec.describe "user/show page", type: :feature do
   describe "when I visit the user show page as a new or logged-out user" do
     it "rejects access" do
       user = FactoryBot.create(:user)
+      
       visit user_path(user.id)
 
       expect(current_path).to eq(root_path)
       expect(page).to have_content("You must be logged in, to access the page you requested.")
+    end
+
+    it "rejects access if I request to see a user dashboard page for a user that does not exist" do 
+      user = FactoryBot.create(:user)
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+      visit user_path(user.id)
+
+      expect(current_path).to eq(user_path(user.id))
+
+      fake_user_id = 100001192290392940349433434343434343
+      visit user_path(fake_user_id)
+      
+      expect(current_path).to eq(root_path)
     end
   end
 
@@ -17,6 +31,7 @@ RSpec.describe "user/show page", type: :feature do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
       visit user_path(user.id)
 
+      expect(current_path).to eq(user_path(user.id))
 
       expect(page).to have_css(".title-text.text-center.pt-5")
 
@@ -37,26 +52,10 @@ RSpec.describe "user/show page", type: :feature do
         expect(page).to have_content("#{user.name}'s Cookbook")
       end
 
-      # within(".navbar.navbar-expand-sm") do
-      #   expect(page).to have_link("Kitchen")
-      #   expect(page).to have_link("Search")
-      #   expect(page).to_not have_link("Log Out")
-      # end
     end
   end
 end
 
-
-
-### Move Back to app/views/users/show.html.erb line 19
-# <div class="container-fluid recipes_saved ">
-#   <h2 class="text-center">Saved Recipes</h2>
-#   <ul>
-#     <% @facade.saved_recipes.each do |recipe| %>
-#       <li><%= link_to "#{recipe.name}", user_recipe_path(@user.id) %></li>
-#     <% end %>
-#   </ul>
-# </div>
 
 
 
