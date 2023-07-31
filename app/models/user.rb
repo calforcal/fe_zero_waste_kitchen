@@ -14,4 +14,10 @@ class User < ApplicationRecord
       # user.skip_confirmation!
     end
   end
+
+  # instance methods
+  # ISSUE  - METHOD BELOW NEEDS REFACTORING
+  def food_saved
+    pounds = 5
+  end
 end
