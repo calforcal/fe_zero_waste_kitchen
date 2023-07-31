@@ -1,10 +1,8 @@
 class UserFacade
 
   def initialize(params)
-    # require 'pry'; binding.pry
     @user_id = params[:id]
     @user_uid = User.find(@user_id).uid
-    # require 'pry'; binding.pry
   end
 
   def service
@@ -18,7 +16,6 @@ class UserFacade
   end
 
   def saved_recipes
-    # require 'pry'; binding.pry
     make_recipes(service.get_user_cookbook(@user_uid))
   end
 

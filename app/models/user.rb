@@ -20,4 +20,5 @@ class User < ApplicationRecord
   def food_saved
     pounds = 5
   end
+
 end
