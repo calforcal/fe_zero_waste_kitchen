@@ -6,5 +6,7 @@ class SearchController < ApplicationController
 
     # Call the facade function to search for recipes
     # @recipes = KitchenFacade.search_recipes(query)
+
+    @recipes = 
   end
 end
