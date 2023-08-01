@@ -6,6 +6,10 @@ class RecipesController < ApplicationController
 
   end
 
+  def show
+    @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
+  end
+
 private
   def find_recipe_owner
     @user = User.find(params[:user_id])
