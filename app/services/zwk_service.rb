@@ -1,5 +1,9 @@
 class ZwkService
 
+  def search_recipe_name(params)
+   get_url("recipes/search?search=#{params}")
+  end
+  
   def get_user_cookbook(user_uid)
     get_url("users/#{user_uid}")
   end

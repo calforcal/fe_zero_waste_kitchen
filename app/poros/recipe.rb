@@ -1,5 +1,6 @@
 class Recipe
   attr_reader :name,
+              :id,
               :instructions,
               :image_url,
               :cook_time,
@@ -10,6 +11,7 @@ class Recipe
               :api_id
 
   def initialize(data)
+    @id = data[:id]
     @name = data[:name]
     @instructions = data[:instructions]
     @image_url = data[:image_url]
