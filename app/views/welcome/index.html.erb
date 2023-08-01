@@ -2,7 +2,7 @@
   <hr>
 <% if current_user %>
   <div class="container btn-group-toggle text-center">
-    <%= link_to "Your Kitchen", user_path(current_user.id),class: "btn btn-success btn-sm mt-2", method: :get %>
+    <%= link_to "Your Kitchen", user_path(current_user.id), class: "btn btn-success btn-sm mt-2", method: :get %>
     <%= link_to "Search Recipes", search_index_path, class: "btn btn-success btn-sm mt-2" %>
   </div>
 <% else %>
