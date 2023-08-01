@@ -6,6 +6,9 @@
 // Import Bootstrap JavaScript components
 import 'bootstrap';
 
+// Import the Autocomplete component from mdb-ui-kit
+import 'mdb-ui-kit';
+
 // Import Bootstrap CSS styles
 import 'bootstrap/dist/css/bootstrap.min.css';
 
