@@ -1,17 +1,8 @@
-class UserService
-
+class ZwkService
 
   def get_user_cookbook(user_uid)
     get_url("users/#{user_uid}")
   end
-
-  # def create_user(params)
-  #   post_url('users', params)
-  # end
-
-  # def post_url(url, data)
-  #   conn.post(url, data.to_json, 'Content-Type' => 'application/json')
-  # end
 
   def get_url(url)
     response = conn.get(url)

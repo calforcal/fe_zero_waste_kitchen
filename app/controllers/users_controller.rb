@@ -3,6 +3,6 @@ class UsersController < ApplicationController
   before_action :find_user, only: :show
 
   def show
-    @facade = UserFacade.new(params)
+    @facade = ZwkFacade.new(params)
   end
 end
