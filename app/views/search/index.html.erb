@@ -1,88 +1,56 @@
-<div class="pt-3">
-  <div class="mask d-flex align-items-center h-100" style="background-color: ;">
-    <div class="container">
-      <div class="row">
-        <div class="card mb-2">
-          <div class="card-body p-2">
-            <div class="input-group input-group-lg">
-              <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Names"
-                aria-label="Type Keywords" aria-describedby="basic-addon2" />
-              <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
-            </div>
-          </div>
-        </div>
-        <div class="card bg-black">
-          <div class="card-body p-4">
-            <h6 class="text-white mt-3 mb-4">Ingredients search</h6>
-            <div class="row">
-              <div class="col-md-4 mb-3">
-                <div class="dropdown">
-                  <a class="btn btn-outline-light btn-lg btn-block dropdown-toggle" href="#" role="button"
-                    id="dropdownMenuLink" data-mdb-toggle="dropdown" aria-expanded="false">
-                    Ingredients
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <li><a class="dropdown-item" href="#">Action</a></li>
-                    <li><a class="dropdown-item" href="#">Another action</a></li>
-                    <li><a class="dropdown-item" href="#">Something else here</a></li>
-                  </ul>
-                </div>
-              </div>
-            <div class="d-flex justify-content-between align-items-center mt-4">
-              <div>
-                <button type="button" class="btn btn-link text-white" data-mdb-ripple-color="dark">
-                  Reset
-                </button>
-                <button type="button" class="btn btn-success">Search</button>
-              </div>
-            </div>
-          </div>
+<!-- Your search form -->
+<div class="mask align-items-center pt-5">
+  <div class="container pt-5">
+    <div class="card mb-2">
+      <div class="card-body p-2">
+        <!-- Remove the search button from here -->
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Names"
+            aria-label="Type Keywords" aria-describedby="basic-addon2" id="recipeNameInput" />
+          <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
+          <button type="button" class="btn btn-success" id="searchButton">Search</button>
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<form>
-  <div class="form-group">
-    <label for="tagInput">Search by Ingredients:</label>
-    <input id="tagInput" name="tags" class="form-control">
-  </div>
-</form>
+<%# <div> %>
+  <%# <% if @recipes.any? %>
+    <%# <h2>Search Results:</h2> %>
+    <%# <ul> %>
+      <%# <% @recipes.each do |recipe| %>
+        <%# <li><%= recipe.name</li> %>
+      <%# <% end %>
+    <%# </ul> %>
+  <%# <% else %>
+    <%# <p>No results found.</p> %>
+  <%# <% end %>
+<%# </div> %>
 
+<!-- Your HTML code -->
+<script src="KitchenFacade"></script>
 <script>
-  $(document).on('turbolinks:load', function() {
-    $('#tagInput').tagify({
-      enforceWhitelist: true,
-      whitelist: ['Sauce', 'Basil', 'Sugar'],
-      dropdown: {
-        enabled: 1,
-        closeOnSelect: false
-      }
-    });
+  function submitSearchForm(event) {
+    event.preventDefault();
+
+    // Get the value entered in the recipe name input
+    const recipeNameInput = document.getElementById("recipeNameInput");
+    const recipeName = recipeNameInput.value;
+
+    // Redirect to the SearchController#index action with the search query
+    window.location.href = `<%= search_index_path %>?search=${encodeURIComponent(recipeName)}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the search button
+    const searchButton = document.getElementById("searchButton");
+
+    // Add a click event listener to the search button
+    searchButton.addEventListener("click", submitSearchForm);
+
+    // Handle form submission using the enter key
+    const form = document.querySelector("form");
+    form.addEventListener("submit", submitSearchForm);
   });
-</script>
-
-<div class="input-group">
-  <div id="search-autocomplete" class="form-outline">
-    <input type="search" id="form1" class="form-control" />
-    <label class="form-label" for="form1">Search</label>
-  </div>
-  <button type="button" class="btn btn-primary">
-    <i class="fas fa-search"></i>
-  </button>
-</div>
-
-<script>
-  const basicAutocomplete = document.querySelector('#search-autocomplete');
-const data = ['One', 'Two', 'Three', 'Four', 'Five'];
-const dataFilter = (value) => {
-  return data.filter((item) => {
-    return item.toLowerCase().startsWith(value.toLowerCase());
-  });
-};
-
-new mdb.Autocomplete(basicAutocomplete, {
-  filter: dataFilter
-});
 </script>
