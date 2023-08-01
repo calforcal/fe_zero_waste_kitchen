@@ -6,8 +6,11 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/css/bootstrap.min.css', integrity: 'sha384-H1Qj70iA1Ix4XQq4jN9I0lDv54j5RoYSK5MihxGqETdgUZPfUZw+1qu0sSOX2LDM', crossorigin: 'anonymous' %>
-    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/bootstrap@5.5.0/dist/js/bootstrap.bundle.min.js', integrity: 'sha384-3SC3BwETK/Dp1cr8Up8Ig8smUMyLb1MD0gXqoGcZhoFqM2iY3lOG5eA3Yzi5Vj7S', crossorigin: 'anonymous' %>
+    <!-- Bootstrap CSS -->
+    <%= stylesheet_link_tag 'https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css' %>
+    
+    <!-- Bootstrap JS -->
+    <%= javascript_include_tag 'https://cdn.jsdelivr.net/npm/bootstrap/dist/js/bootstrap.bundle.min.js' %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
