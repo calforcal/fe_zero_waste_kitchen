@@ -1,4 +1,4 @@
-# fe_zero_waste_kitchen
+# zero_waste_kitchen
 
 # ZWK JSON Contract
 
@@ -12,15 +12,38 @@
     "id": "integer",
     "type": "string",
     "attributes": {
-      "first_name": "string",
-      "last_name": "string",
-      "username": "string",
+      "uid": "string",
+      "name": "string",
       "email": "string",
       "stats": {
         "lions_saved": "integer",
         "recipes_cooked": "integer",
         "recipes_created": "integer"
       }
+      "cooked_recipes": [
+        {
+          "name": "string",
+          "api_id": "string",
+          "id": "integer"
+        }
+      ]
+      "created_recipes": [
+        {
+          "name": "string",
+          "api_id": "string",
+          "id": "integer"
+        }
+      ]
+      "saved_recipes": [
+        {
+          "name": "string",
+          "api_id": "string",
+          "id": "integer"
+        }
+      ]
+      "num_cooked_recipes": "integer",
+      "num_created_recipes": "integer",
+      "num_saved_recipes": "integer"
     }
   }
 }
@@ -33,62 +56,105 @@
 
 ```
 {
-  "first_name": "string",
-  "last_name": "string",
-  "username": "string",
-  "email": "string",
-  "password": "string",
-  "password_confirmation": "string"
+  "uid": "string"
 }
 ```
 
 ### Create a Recipe
 <p> POST ‘/api/v1/user/:user_id/recipes’ </p>
-<p> Example of the body details to be provided when creating a cooked recipe </p>
+<p> Example of the body details to be provided when creating a recipe </p>
 
 ```
 {
-  "user_id": "integer",
-  "recipe_id": "integer",
-  "instructions": "string",
+  "name": "string",
+  "instructions": "array",
   "image_url": "string",
-  "cook_time": "integer",
-  "public_status": "boolean"
+  "cook_time": "string",
+  "public_status": "boolean",
+  "source_name": "string",
+  "source_url": "string",
+  "user_submitted": "boolean",
+  "api_id": "string",
+  "uid": "string",
+  "ingredients": [
+    {
+      "name": "string",
+      "units": "float",
+      "unit_type": "string" 
+    },
+    {
+      "name": "string",
+      "units": "float",
+      "unit_type": "string" 
+    }
+  ]
 }
 ```
 
 ### Create a Cooked Recipe (user_recipes)
-<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?value=cooked’ </p>
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
 <p> Example of the body details to be provided when creating a cooked recipe </p>
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
   "recipe_id": "integer",
+  "api_id": "string",
   "cook_status": "boolean"
 }
 ```
 
-### Create a Saved Recipe (user_recipes)
-<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id?value=saved’ </p>
+### Create Saved Ingredients (user_ingredients)
+<p> POST ‘/api/v1/user/:user_id/ingredients’ </p>
 <p> Example of the body details to be provided when creating a saved recipe </p>
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
+  "ingredients: [
+    {
+      "ingredient_name": "string",
+      "units": "float",
+      "unit_type": "string" 
+    }
+  ]
+}
+```
+
+### Create a Saved Recipe (user_recipes)
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
+<p> Example of the body details to be provided when creating a saved recipe </p>
+
+```
+{
+  "uid": "integer",
   "recipe_id": "integer",
+  "api_id": "string",
   "saved_status": "boolean"
+}
+```
+### Rate a Recipe (user_recipes)
+<p> POST ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
+<p> Example of the body details to be provided when creating a saved recipe. (Ratings are 1-5) </p>
+
+```
+{
+  "uid": "string",
+  "recipe_id": "integer",
+  "api_id": "string",
+  "num_stars": "integer"
 }
 ```
 
 ### Update a Cooked Recipe (user_recipes)
-<p> PATCH ‘/api/v1/user/:user_id/recipes/:recipe_id?value=rate’ </p>
+<p> PATCH ‘/api/v1/user/:user_id/recipes/:recipe_id’ </p>
 <p> Example of the body details to be provided when updating (rating) a cooked recipe </p>
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
   "recipe_id": "integer",
+  "api_id": "string",
   "cook_status": "boolean",
   "num_stars": "integer"
 }
@@ -100,91 +166,11 @@
 
 ```
 {
-  "id": "integer",
+  "uid": "string",
   "name": "string",
-  "username": "string",
   "email": "string"
 }
 ```
-
-### Fetch One Users Cooked Recipes
-<p>GET '/api/v1/users/:id/recipes?value=cooked'</p>
-<p> Example response of a Users Recipes resource </p>
-<p> Params: value=cooked</p>
-
-```
-{
-  "data": [
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    },
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    }
-  ]
-}
-```
-
-### Fetch One Users Created Recipes
-<p>GET '/api/v1/users/:id/recipes?value=created'</p>
-<p> Example response of a Users Recipes resource </p>
-<p> Params: value=created</p>
-
-```
-{
-  "data": [
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    },
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    }
-  ]
-}
-```
-
-### Fetch One Users Saved Recipes
-<p>GET '/api/v1/users/:id/recipes?value=saved'</p>
-<p> Example response of a Users Recipes resource </p>
-<p> Params: value=saved</p>
-
-```
-{
-  "data": [
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    },
-    {
-      "id": "string",
-      "type": "string",
-      "attributes": {
-        "name": "string"
-      }
-    }
-  ]
-}
-```
-
 
 ### Fetch One Saved Recipes
 <p>GET '/api/v1/recipes/:id'</p>
@@ -192,7 +178,7 @@
 
 ```
 {
-  "id": "string",
+  "id": "integer",
   "type": "string",
   "attributes": {
     "image_url": "string",
@@ -239,7 +225,7 @@
 
 ```
 {
-  "user_id": "integer",
+  "uid": "string",
   "recipe_id": "integer"
 }
 ```
@@ -258,6 +244,7 @@
       "name": "string",
       "username": "string"
     },
+  },
   {
     "id": "string",
     "type": "string",
@@ -265,7 +252,7 @@
       "name": "string",
       "username": "string"
     }
-  }
+  }]
 }
 ```
 
@@ -290,7 +277,7 @@
 ```
 
 ### Fetch searched recipes --> by Name
-<p> GET ‘/api/v1/recipes/search?name=query%string’ </p>
+<p> GET ‘/api/v1/recipes/search?search=query%string’ </p>
 <p> Example of a response from the Search (by name) resource </p>
 
 
@@ -317,7 +304,7 @@
 
 
 ### Fetch searched recipes --> by Ingredients
-<p> GET ‘/api/v1/recipes/search?ingredient=query%string,+query’ </p>
+<p> GET ‘/api/v1/recipes/search?ingredients=query%string,+query’ </p>
 <p> Example of a response from the Search (by ingredients(s) ) resource </p>
 
 

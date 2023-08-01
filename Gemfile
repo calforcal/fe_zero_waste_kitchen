@@ -71,6 +71,8 @@ group :development, :test do
   gem "rubocop"
   gem "orderly"
   gem "launchy"
+  gem 'factory_bot_rails'
+  gem 'faker'
 end
 
 group :development do
@@ -88,4 +90,6 @@ group :test do
   gem "simplecov"
   gem "vcr"
   gem "webmock"
+  gem 'selenium-webdriver'
+  gem 'webdrivers'
 end
