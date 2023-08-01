@@ -1,1 +1,44 @@
-<h1>HELLO</h1>
+<div class="title">
+  <h1 class="title-text text-center pt-5"> <%= @user.name %>'s Zero Waste Kitchen </h1>
+  <hr>
+</div>
+
+<div class="food_saved">
+  <h2 class="text-center"><%= @user.food_saved %> lbs. of food saved </h2>
+</div>
+
+<div class="container btn-group-toggle text-center">
+  <%= link_to "Search Recipes", search_index_path, class: "btn btn-success btn-sm mt-2" %><br>
+  <%= link_to "Make your own Recipe", new_user_recipe_path(@user.id), class: "btn btn-success btn-sm mt-2" %>
+</div><br>
+
+<div class="container-fluid cookbook-title">
+  <h2 class="text-center"><%= @user.name %>'s Cookbook</h2>
+</div>
+
+<div class="dropdown">
+  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+    <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="<%= root_path %>">HTML</a></li>
+    <li><a href="#">CSS</a></li>
+    <li><a href="#">JavaScript</a></li>
+  </ul>
+</div>
+
+
+<script >
+  const dropdown_button = document.querySelector('.dropdown');
+  const dropdown_menu = document.querySelector('.dropdown-menu');
+
+  console.log(dropdown_button)
+  dropdown_button.addEventListener("click", openDropdown)
+  function openDropdown() {
+  dropdown_menu.style.display = "block"  
+  ;}
+
+</script>
+
+
+
