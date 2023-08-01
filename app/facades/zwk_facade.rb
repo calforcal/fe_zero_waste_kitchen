@@ -1,8 +1,11 @@
 class ZwkFacade
 
-  def initialize(params)
-    @user_id = params[:id]
-    @user_uid = User.find(@user_id).uid
+  def initialize(params=nil)
+    if params[:id]
+      @user_id = params[:id]
+      @user_uid = User.find(@user_id).uid
+    end
+    @recipe_id = params[:recipe_id]
   end
 
   def service
@@ -40,6 +43,10 @@ class ZwkFacade
 
   def cooked_recipes
     make_cooked_recipes(service.get_user_cookbook(@user_uid))
+  end
+
+  def recipe_show
+    service.get_recipe_info(@recipe_id)
   end
 
 end
