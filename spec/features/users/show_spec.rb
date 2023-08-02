@@ -119,6 +119,22 @@ RSpec.describe "user/show page", type: :feature do
         end
       end
     end
+
+    describe 'User Stats' do
+      it 'displays a section for stats' do
+        user = FactoryBot.create(:user, name: 'michael', email: 'michael@gmail.com', uid: '123')
+        allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+        visit user_path(user.id)
+
+        expect(current_path).to eq(user_path(user.id))
+
+        within '.user_stats' do
+          expect(page).to have_content('Recipes Created: 1')
+          expect(page).to have_content('Recipes Cooked: 1')
+          expect(page).to have_content('Carbon (CO2) Emissions Saved: 14.14 kilograms')
+        end
+      end
+    end
   end
 end
 
