@@ -22,8 +22,8 @@
         <!-- Remove the search button from here -->
         <div class="input-group input-group-lg">
           <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Ingredients"
-            aria-label="Type Ingredients" aria-describedby="basic-addon2" id="recipeIngredientsInput" />
-          <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
+            aria-label="Type Ingredients" aria-describedby="basic-addon3" id="recipeIngredientsInput" />
+          <span class="input-group-text border-0" id="basic-addon3"><i class="fas fa-search"></i></span>
           <button type="button" class="btn btn-success" id="ingredientsSearchButton">Search</button>
         </div>
       </div>
@@ -39,7 +39,7 @@
           <% if @recipes %>
             <h2>Search Results:</h2> 
             <ul>
-              <% @recipes.each do |recipe| %>
+              <% @recipes[0..9].each do |recipe| %>
               <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
             <% end %>
             </ul>
@@ -55,7 +55,7 @@
 <!-- Your HTML code -->
 
 <script>
-  function submitSearchForm(event) {
+  function submitSearchForm1(event) {
     event.preventDefault();
 
     // Get the value entered in the recipe name input
@@ -71,16 +71,16 @@
     const searchButton = document.getElementById("searchButton");
 
     // Add a click event listener to the search button
-    searchButton.addEventListener("click", submitSearchForm);
+    searchButton.addEventListener("click", submitSearchForm1);
 
     // Handle form submission using the enter key
     const form = document.querySelector("form");
-    form.addEventListener("submit", submitSearchForm);
+    form.addEventListener("submit", submitSearchForm1);
   });
 </script>
 
 <script>
-  function submitSearchForm(event) {
+  function submitSearchForm2(event) {
     event.preventDefault();
 
     // Get the value entered in the recipe name input
@@ -88,18 +88,18 @@
     const recipeIngredients = recipeIngredientsInput.value;
 
     // Redirect to the SearchController#index action with the search query
-    window.location.href = `<%= search_index_path %>?search=${encodeURIComponent(recipeIngredients)}`;
+    window.location.href = `<%= search_index_path %>?ingredients=${encodeURIComponent(recipeIngredients)}`;
   }
 
   document.addEventListener("DOMContentLoaded", function () {
     // Get the search button
-    const searchButton = document.getElementById("ingredientsSearchButton");
+    const ingredientsSearchButton = document.getElementById("ingredientsSearchButton");
 
     // Add a click event listener to the search button
-    searchButton.addEventListener("click", submitSearchForm);
+    ingredientsSearchButton.addEventListener("click", submitSearchForm2);
 
     // Handle form submission using the enter key
     const form = document.querySelector("form");
-    form.addEventListener("submit", submitSearchForm);
+    form.addEventListener("submit", submitSearchForm2);
   });
 </script>
