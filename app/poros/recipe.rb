@@ -11,8 +11,8 @@ class Recipe
               :api_id
 
   def initialize(data)
-    @id = data[:id]
     @name = data[:name]
+    @id = data[:id]
     @instructions = data[:instructions]
     @image_url = data[:image_url]
     @cook_time = data[:cook_time]

@@ -2,7 +2,36 @@
 # yarn lockfile v1
 
 
+bootstrap-autocomplete@^2.3.7:
+  version "2.3.7"
+  resolved "https://registry.yarnpkg.com/bootstrap-autocomplete/-/bootstrap-autocomplete-2.3.7.tgz#d3d0ebfe124f8b0299a99b1ecdf885816bbf29d8"
+  integrity sha512-YD2bev4bDTLsAzkr6lSTuMZOcE7k2+c2BYbtIT+j/XpPnM5ADLlbhR4NnpSsfg6Vde5xQckG/IbdRKrLlAtXOw==
+
 bootstrap@^5.3.1:
   version "5.3.1"
   resolved "https://registry.yarnpkg.com/bootstrap/-/bootstrap-5.3.1.tgz#8ca07040ad15d7f75891d1504cf14c5dedfb1cfe"
   integrity sha512-jzwza3Yagduci2x0rr9MeFSORjcHpt0lRZukZPZQJT1Dth5qzV7XcgGqYzi39KGAVYR8QEDVoO0ubFKOxzMG+g==
+
+optimist@~0.3:
+  version "0.3.7"
+  resolved "https://registry.yarnpkg.com/optimist/-/optimist-0.3.7.tgz#c90941ad59e4273328923074d2cf2e7cbc6ec0d9"
+  integrity sha512-TCx0dXQzVtSCg2OgY/bO9hjM9cV4XYx09TVK+s3+FhkjT6LovsLe+pPMzpWf+6yXK/hUizs2gUoTw3jHM0VaTQ==
+  dependencies:
+    wordwrap "~0.0.2"
+
+select2@^4.1.0-rc.0:
+  version "4.1.0-rc.0"
+  resolved "https://registry.yarnpkg.com/select2/-/select2-4.1.0-rc.0.tgz#ba3cd3901dda0155e1c0219ab41b74ba51ea22d8"
+  integrity sha512-Hr9TdhyHCZUtwznEH2CBf7967mEM0idtJ5nMtjvk3Up5tPukOLXbHUNmh10oRfeNIhj+3GD3niu+g6sVK+gK0A==
+
+tagify@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/tagify/-/tagify-0.1.1.tgz#bcd42738a27fc0915e2dd070137859541861a4bc"
+  integrity sha512-IKFIcrNowtkkMzJgwCE6F5MSPcdW7QqDHV7/m3S6p9pgjQC4VmGpFAE8swx4haLbohnBrI/GSosuUNCzN8N/lw==
+  dependencies:
+    optimist "~0.3"
+
+wordwrap@~0.0.2:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/wordwrap/-/wordwrap-0.0.3.tgz#a3d5da6cd5c0bc0008d37234bbaf1bed63059107"
+  integrity sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==

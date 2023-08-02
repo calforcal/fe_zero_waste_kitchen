@@ -1,0 +1,105 @@
+<!-- Your search form -->
+<div class="d-flex align-items-center pt-1">
+  <div class="container pt-1">
+    <div class="card mb-2">
+      <div class="card-body p-2">
+        <!-- Remove the search button from here -->
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Names"
+            aria-label="Type Keywords" aria-describedby="basic-addon2" id="recipeNameInput" />
+          <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
+          <button type="button" class="btn btn-success" id="nameSearchButton">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex align-items-center pt-1">
+  <div class="container pt-1">
+    <div class="card mb-2">
+      <div class="card-body p-2">
+        <!-- Remove the search button from here -->
+        <div class="input-group input-group-lg">
+          <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Ingredients"
+            aria-label="Type Ingredients" aria-describedby="basic-addon2" id="recipeIngredientsInput" />
+          <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
+          <button type="button" class="btn btn-success" id="ingredientsSearchButton">Search</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex align-items-center pt-1">
+  <div class="container-fluid">
+    <div class="card mb-2">
+      <div class="card-body p-2">
+        <div id="results">
+          <% if @recipes %>
+            <h2>Search Results:</h2> 
+            <ul>
+              <% @recipes[0..9].each do |recipe| %>
+              <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+            <% end %>
+            </ul>
+          <% elsif (params[:search] || params[:ingredients]) && !@recipes %>
+            <p> No results found.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Your HTML code -->
+
+<script>
+  function submitSearchForm1(event) {
+    event.preventDefault();
+
+    // Get the value entered in the recipe name input
+    const recipeNameInput = document.getElementById("recipeNameInput");
+    const recipeName = recipeNameInput.value;
+
+    // Redirect to the SearchController#index action with the search query
+    window.location.href = `<%= search_index_path %>?search=${encodeURIComponent(recipeName)}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the search button
+    const nameSearchButton = document.getElementById("nameSearchButton");
+
+    // Add a click event listener to the search button
+    nameSearchButton.addEventListener("click", submitSearchForm1);
+
+    // Handle form submission using the enter key
+    const form = document.querySelector("form");
+    form.addEventListener("submit", submitSearchForm1);
+  });
+</script>
+
+<script>
+  function submitSearchForm2(event) {
+    event.preventDefault();
+
+    // Get the value entered in the recipe name input
+    const recipeIngredientsInput = document.getElementById("recipeIngredientsInput");
+    const recipeIngredients = recipeIngredientsInput.value;
+
+    // Redirect to the SearchController#index action with the search query
+    window.location.href = `<%= search_index_path %>?ingredients=${encodeURIComponent(recipeIngredients)}`;
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    // Get the search button
+    const ingredientsSearchButton = document.getElementById("ingredientsSearchButton");
+
+    // Add a click event listener to the search button
+    ingredientsSearchButton.addEventListener("click", submitSearchForm2);
+
+    // Handle form submission using the enter key
+    const form = document.querySelector("form");
+    form.addEventListener("submit", submitSearchForm2);
+  });
+</script>

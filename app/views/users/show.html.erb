@@ -25,7 +25,7 @@
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Saved Recipes
       <span class="caret"></span>
     </button>
-  
+ 
     <ul class="dropdown-menu">
       <% @facade.saved_recipes.each do |recipe| %>
         <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
