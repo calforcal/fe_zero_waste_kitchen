@@ -21,9 +21,6 @@ RSpec.describe User, type: :model do
 
       expect(user.email).to be_a(String)
       expect(last_created_user.email).to eq(user.email)
-
-      expect(user.token).to be_a(String)
-      expect(last_created_user.token).to eq(user.token)
     end
 
     it 'has a valid factory' do

@@ -3,8 +3,10 @@
     <hr>
 </div>
 
-<div class="food_saved">
-  <h2 class="text-center"><%= @user.food_saved %> lbs. of food saved </h2>   
+<div class="user_stats">
+  <h2 class="text-center">Recipes Created: <%= @facade.user_stats.first %></h2>
+  <h2 class="text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
+  <h2 class="text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
 </div>
 
 <div class="container btn-group-toggle text-center">
@@ -26,7 +28,7 @@
   
     <ul class="dropdown-menu">
       <% @facade.saved_recipes.each do |recipe| %>
-        <li><a href="<%= user_recipe_path(@user.id, recipe.id) %>"><%= recipe.name %></a></li>
+        <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
       <% end %>
     </ul>
   </div>
@@ -42,7 +44,7 @@
   
     <ul class="dropdown-menu created">
       <% @facade.created_recipes.each do |recipe| %>
-        <li><a href="<%= user_recipe_path(@user.id, recipe.id) %>"><%= recipe.name %></a></li>
+        <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
       <% end %>
     </ul>
   </div>
@@ -58,7 +60,7 @@
 
     <ul class="dropdown-menu cooked">
       <% @facade.cooked_recipes.each do |recipe| %>
-        <li><a href="<%= user_recipe_path(@user.id, recipe.id) %>"><%= recipe.name %></a></li>
+        <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
       <% end %>
     </ul>
   </div>

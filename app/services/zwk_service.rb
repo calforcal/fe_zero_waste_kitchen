@@ -12,6 +12,10 @@ class ZwkService
     get_url("users/#{user_uid}")
   end
 
+  def get_recipe_info(recipe_id)
+    get_url("/recipes/#{recipe_id}")
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)

@@ -9,5 +9,5 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :create] do 
     resources :recipes, only: [:show, :new, :create]
   end
-  resources :recipes, only: [:show]
+  resources :recipes, only: [:new, :show]
 end
