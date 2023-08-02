@@ -19,7 +19,7 @@ class ZwkFacade
 
   def make_saved_recipes(json)
     recipes = json[:data][:attributes][:saved_recipes]
-    recipes.map do |recipe|
+    stuff = recipes.map do |recipe|
       Recipe.new(recipe)
     end
   end
@@ -48,5 +48,9 @@ class ZwkFacade
 
   def cooked_recipes
     make_cooked_recipes(service.get_user_cookbook(@user_uid))
+  end
+
+  def recipe_show
+    service.get_recipe_info(@recipe_id)
   end
 end

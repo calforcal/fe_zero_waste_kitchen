@@ -60,11 +60,11 @@ RSpec.describe "user/show page", type: :feature do
         visit user_path(user.id)
 
         expect(current_path).to eq(user_path(user.id))
+        
 
         within '.container-fluid.recipes_saved' do
           expect(page).to have_link('Chicken Parm')
           expect(page).to have_link('Meatballs')
-
           click_link 'Chicken Parm'
           expect(current_path).to eq("/recipes/5")
         end
