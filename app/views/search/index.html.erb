@@ -8,7 +8,7 @@
           <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Names"
             aria-label="Type Keywords" aria-describedby="basic-addon2" id="recipeNameInput" />
           <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
-          <button type="button" class="btn btn-success" id="searchButton">Search</button>
+          <button type="button" class="btn btn-success" id="nameSearchButton">Search</button>
         </div>
       </div>
     </div>
@@ -22,8 +22,8 @@
         <!-- Remove the search button from here -->
         <div class="input-group input-group-lg">
           <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Ingredients"
-            aria-label="Type Ingredients" aria-describedby="basic-addon3" id="recipeIngredientsInput" />
-          <span class="input-group-text border-0" id="basic-addon3"><i class="fas fa-search"></i></span>
+            aria-label="Type Ingredients" aria-describedby="basic-addon2" id="recipeIngredientsInput" />
+          <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
           <button type="button" class="btn btn-success" id="ingredientsSearchButton">Search</button>
         </div>
       </div>
@@ -68,10 +68,10 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     // Get the search button
-    const searchButton = document.getElementById("searchButton");
+    const nameSearchButton = document.getElementById("nameSearchButton");
 
     // Add a click event listener to the search button
-    searchButton.addEventListener("click", submitSearchForm1);
+    nameSearchButton.addEventListener("click", submitSearchForm1);
 
     // Handle form submission using the enter key
     const form = document.querySelector("form");
