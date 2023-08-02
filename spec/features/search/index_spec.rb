@@ -23,13 +23,13 @@ RSpec.describe "Recipe Search", type: :feature do
       find(id: "recipeNameInput").fill_in with: "tomato"
       find(:button, id: "nameSearchButton").click
       
-      # save_and_open_page
-      # expect(current_path).to eq(search_index_path)
-      # expect(response).to be(successful)
-      # within("#results") do 
-      #   expect(page).to have_content("Tomato Cutlets")
-      #   expect(page).to have_content("Tomato Stack Salad")
-      # end
+      save_and_open_page
+      expect(current_path).to eq(search_index_path)
+      expect(response).to be(successful)
+      within("#results") do 
+        expect(page).to have_content("Tomato Cutlets")
+        expect(page).to have_content("Tomato Stack Salad")
+      end
     end
   end
 end
