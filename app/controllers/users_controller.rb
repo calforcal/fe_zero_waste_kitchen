@@ -4,5 +4,7 @@ class UsersController < ApplicationController
 
   def show
     @facade = ZwkFacade.new(params)
+    require 'pry'; binding.pry
+    
   end
 end

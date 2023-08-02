@@ -1,9 +1,11 @@
 class ZwkFacade
 
-  def initialize(params = {})
-    @user_id = params[:id]
-    @user_uid = params[:uid]
-    @name = params[:search]
+  def initialize(params=nil)
+    if params[:id]
+      @user_id = params[:id]
+      @user_uid = User.find(@user_id).uid
+    end
+    @recipe_id = params[:recipe_id]
   end
 
   def service
