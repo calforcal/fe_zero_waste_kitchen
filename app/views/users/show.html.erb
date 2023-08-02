@@ -3,8 +3,10 @@
     <hr>
 </div>
 
-<div class="food_saved">
-  <h2 class="text-center"><%= @user.food_saved %> lbs. of food saved </h2>   
+<div class="user_stats">
+  <h2 class="text-center">Recipes Created: <%= @facade.user_stats.first %></h2>
+  <h2 class="text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
+  <h2 class="text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
 </div>
 
 <div class="container btn-group-toggle text-center">
