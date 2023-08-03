@@ -13,7 +13,7 @@ class Recipe
 
   def initialize(data)
     @name = data[:name]
-    @id = data[:id]
+    @id = data[:id].to_i
     @instructions = data[:instructions]
     @ingredients = data[:ingredients]
     @image_url = data[:image_url]
@@ -23,5 +23,13 @@ class Recipe
     @source_url = data [:source_url]
     @user_submitted = data[:user_submitted]
     @api_id = data[:api_id]
+    @ingredients = data[:ingredients]
+  end
+
+  def cook(serving)
+    ingredients.each do |ingredient|
+      ingredient.units = (ingredient.units * serving.to_f)
+    end
+    self
   end
 end

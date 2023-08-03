@@ -60,6 +60,7 @@ gem 'bootstrap', '~> 5.3.0.alpha3'
 
 # Use Jquery for Bootstrap's JavaScript Components
 gem 'jquery-rails'
+gem 'jsonapi-serializer'
 
 
 group :development, :test do
