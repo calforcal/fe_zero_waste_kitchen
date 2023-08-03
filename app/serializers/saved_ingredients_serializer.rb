@@ -1,6 +1,8 @@
 class SavedIngredientsSerializer
   include JSONAPI::Serializer
-  attributes :uid
-  has_many :ingredients
+
+  attribute :pizza do |object|
+    require 'pry'; binding.pry
+  end           
 end
 

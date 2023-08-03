@@ -20,8 +20,7 @@ class RecipesController < ApplicationController
           ingredients << ingredient
         end
       end
-      require 'pry'; binding.pry
-      # ZwkService.new.save_ingredients(params)
+      ZwkService.new.save_ingredients(ingredients, @new_recipe.id, current_user.uid)
     end
   end
 

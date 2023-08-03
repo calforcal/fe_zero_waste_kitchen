@@ -25,17 +25,27 @@ class ZwkService
     JSON.parse(response.body, symbolize_names: true)
   end
 
-  def save_ingredients(params)
-    post_url(url: "/api/v1/user/:user_id/recipes/:recipe_id", params: JSON.generate(SavedIngredientsSerializer.new(params)))
-  end
-
-  def post_url(url)
-    conn_post.post(url)
+  def save_ingredients(params, recipe_id, uid)
+    ingredient_hashes = []
+    params.each do |ingredient|
+      ingr = Hash.new
+      ingr[:ingredient_name] = ingredient.name
+      ingr[:units] = ingredient.units
+      ingr[:unit_type] = ingredient.unit_type
+      ingredient_hashes << ingr
+    end
+    params = {
+      uid: uid,
+      ingredients: ingredient_hashes
+    }
+    conn_post.post "users/#{uid}/ingredients" do |req|
+      req.body = JSON.generate(params)
+    end
   end
 
   def conn_post
     Faraday.new(url: "http://localhost:5000/api/v1/") do |faraday|
-      faraday.headers['Content-Type: '] = 'application/json'
+      faraday.headers['Content-Type'] = 'application/json'
     end
   end
 
