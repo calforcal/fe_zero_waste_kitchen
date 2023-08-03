@@ -62,7 +62,9 @@ class ZwkFacade
               source_url: recipe[:data][:attributes][:source_url],
               user_submitted: recipe[:data][:attributes][:user_submitted],
               api_id: recipe[:data][:attributes][:api_id],
-              ingredients: recipe[:data][:attributes][:ingredients]
+              ingredients: recipe[:data][:attributes][:ingredients].map do |ingredient|
+                Ingredient.new(ingredient)
+              end
               )
   end
 end

@@ -13,7 +13,7 @@ class Recipe
 
   def initialize(data)
     @name = data[:name]
-    @id = data[:id]
+    @id = data[:id].to_i
     @instructions = data[:instructions]
     @image_url = data[:image_url]
     @cook_time = data[:cook_time]

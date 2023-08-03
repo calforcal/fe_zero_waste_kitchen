@@ -1,12 +1,22 @@
 <h2> Get Cookin'</h2>
-<%= form_with url: "/recipes/:recipe_id/cook", method: :post, local: true do |form| %>
-  <%= form.label "How many servings do you want to cook?" %>
-  <%= form.radio_button :one_serving, "One" %>
-  <%= form.radio_button :two_serving, "Two" %>
-  <%= form.radio_button :half_serving, "Half" %>
+<%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
+  <%= form.label "How many servings do you want to cook?" %><br>
+  <%= form.label :one_serving, "One Serving" %><br>
+  <%= form.radio_button :serving, "One" %><br>
+  <%= form.label :two_serving, "Two Servings" %><br>
+  <%= form.radio_button :serving, "Two" %><br>
+  <%= form.label :half_serving, "Half Serving" %><br>
+  <%= form.radio_button :serving, "Half" %><br>
+  <%= form.hidden_field :cooked, value: true %>
+  <%= form.hidden_field :id, value: @recipe.id %>
+  <%= form.label "Save from waste bin:" %>
   <% @recipe.ingredients.each do |ingredient| %>
-    <%= form.label :ingredient, "Save from waste bin#{ingredient[:name]}" %>
-    <%= form.check_box :saved %>
-    <%= form.hidden_field :ingredient, value: ingredient %>
+    <li>
+      <%= form.label "#{ingredient.name}" %>
+      
+      <%# <%= form.check_box "ingredient_#{ingredient.name}".to_sym, {}, ingredient.id %>
+    </li>
   <% end %>
+  <%# <%= form.collection_check_boxes :saved_ingredients, @recipe.ingredients, :id, :name, :unit_type, :units %> 
+  <%= form.submit %>
 <% end %>
