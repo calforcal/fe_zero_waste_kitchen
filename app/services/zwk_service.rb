@@ -19,9 +19,25 @@ class ZwkService
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
+
+    # Possible Sad Path Solution
+    # if response.success?
+    #   # Attempt to parse JSON data
+    #   begin
+    #     JSON.parse(response.body, symbolize_names: true)
+    #   rescue JSON::ParserError => e
+    #     # If parsing fails, return an empty hash (or handle the error as needed)
+    #     puts "JSON Parsing Error: #{e.message}"
+    #     {}
+    #   end
+    # else
+    #   # Handle unsuccessful response (e.g., 4xx or 5xx status codes)
+    #   puts "HTTP Error: #{response.status}"
+    #   {}
+    # end
   end
 
   def conn
-    Faraday.new(url: "https://be-zero-waste-kitchen.onrender.com/api/v1/")
+    Faraday.new(url: "http://localhost:5000/api/v1/")
   end
 end
