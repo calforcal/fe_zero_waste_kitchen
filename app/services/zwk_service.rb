@@ -22,6 +22,6 @@ class ZwkService
   end
 
   def conn
-    Faraday.new(url: "http://localhost:5000/api/v1/")
+    Faraday.new(url: "https://be-zero-waste-kitchen.onrender.com/api/v1/")
   end
 end
