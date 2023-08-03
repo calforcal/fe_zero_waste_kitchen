@@ -24,4 +24,14 @@ class Recipe
     @api_id = data[:api_id]
     @ingredients = data[:ingredients]
   end
+
+  def cook(serving)
+    things = ingredients.map do |ingredient|
+      ingr = Hash.new
+      ingr[:ingredient_name] = ingredient.name
+      ingr[:units] = ingredient.units * serving.to_f
+      ingr[:unit_type] = ingredient.unit_type
+      ingr
+    end
+  end
 end

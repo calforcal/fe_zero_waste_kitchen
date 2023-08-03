@@ -2,11 +2,11 @@
 <%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
   <%= form.label "How many servings do you want to cook?" %><br>
   <%= form.label :one_serving, "One Serving" %><br>
-  <%= form.radio_button :serving, "One" %><br>
+  <%= form.radio_button :serving, "1" %><br>
   <%= form.label :two_serving, "Two Servings" %><br>
-  <%= form.radio_button :serving, "Two" %><br>
+  <%= form.radio_button :serving, "2" %><br>
   <%= form.label :half_serving, "Half Serving" %><br>
-  <%= form.radio_button :serving, "Half" %><br>
+  <%= form.radio_button :serving, "0.5" %><br>
   <%= form.hidden_field :cooked, value: true %>
   <%= form.hidden_field :id, value: @recipe.id %>
   <%= form.label "Save from waste bin:" %>
