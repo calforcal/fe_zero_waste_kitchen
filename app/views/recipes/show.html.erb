@@ -1,0 +1,21 @@
+<% binding.pry %>
+<h1 class="title-text text-center pt-5"> <%= @recipe[:data][:attributes][:name] %> </h1>
+<h6 class="text-center text-white">Cook Time: <%= @recipe[:data][:attributes][:cook_time] %>mins</h6>
+
+<h3 class="title-text">Ingredients: </h3>
+<div class="card text-white bg-success mb-3" style="max-width: 15rem;">
+  <ul>
+    <% @recipe[:data][:attributes][:ingredients].each do |ingredient| %>
+      <li><%= ingredient[:name] %></li>
+    <% end %>
+  </ul>
+</div>
+
+<h3 class="title-text">Instructions: </h3>
+<div class="card text-white bg-success mb-3" style="max-width: 50rem;">
+  <ol>
+    <% @recipe[:data][:attributes][:instructions].each do |instruction| %>
+      <li><%= instruction %></li><hr>
+    <% end %>
+  </ol>
+</div>
