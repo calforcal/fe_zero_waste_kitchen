@@ -8,7 +8,8 @@ class Recipe
               :source_name,
               :source_url,
               :user_submitted,
-              :api_id
+              :api_id,
+              :ingredients
 
   def initialize(data)
     @name = data[:name]
