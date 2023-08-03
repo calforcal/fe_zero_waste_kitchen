@@ -30,7 +30,7 @@ class ZwkFacade
       Recipe.new(recipe)
     end
   end
-  
+
   def make_cooked_recipes(json)
     recipes = json[:data][:attributes][:cooked_recipes]
     recipes.map do |recipe|
