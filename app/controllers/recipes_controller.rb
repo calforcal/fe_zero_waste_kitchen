@@ -13,6 +13,7 @@ class RecipesController < ApplicationController
   def cook
     @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
     if params[:cooked]
+      ingredients = @recipe.cook(params[:serving])
       ingredients = []
       @recipe.ingredients.each do |ingredient|
         if params[:ingredients].include?(ingredient.id.to_s)
