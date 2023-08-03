@@ -26,8 +26,9 @@ class Recipe
   end
 
   def cook(serving)
-    ingredients.each do |ingredient|
+   new_recipe = ingredients.each do |ingredient|
       ingredient.units = (ingredient.units * serving.to_f)
     end
+   new_recipe
   end
 end

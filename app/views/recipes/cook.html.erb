@@ -1,4 +1,15 @@
 <h2> Get Cookin'</h2>
+
+<%= @recipe.name %>
+<% @recipe.ingredients do |ingredient| %>
+  <%= ingredient.name %>
+  <%= ingredient.units %>
+  <%= ingredient.unit_type %><br><br>
+<% end %>
+<% @recipe.instructions do |instructions| %>
+  <%= instructions %><br>
+<% end %>
+
 <%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
   <%= form.label "How many servings do you want to cook?" %><br>
   <%= form.label :one_serving, "One Serving" %><br>
@@ -17,4 +28,12 @@
     </li>
   <% end %>
   <%= form.submit %>
+<% end %>
+
+<% if @new_recipe %>
+  <% @new_recipe.ingredients do |ingredient| %>
+    <%= ingredient.name %>
+    <%= ingredient.units %>
+    <%= ingredient.unit_type %><br><br>
+  <% end %>
 <% end %>

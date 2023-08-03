@@ -13,15 +13,15 @@ class RecipesController < ApplicationController
   def cook
     @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
     if params[:cooked]
-      ingredients = @recipe.cook(params[:serving])
+      @new_recipe = @recipe.cook(params[:serving])
       ingredients = []
-      @recipe.ingredients.each do |ingredient|
+      @new_recipe.ingredients.each do |ingredient|
         if params[:ingredients].include?(ingredient.id.to_s)
           ingredients << ingredient
         end
       end
       require 'pry'; binding.pry
-      ZwkService.new.save_ingredients(params)
+      # ZwkService.new.save_ingredients(params)
     end
   end
 
