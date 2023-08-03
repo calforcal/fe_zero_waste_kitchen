@@ -1,7 +1,12 @@
+<h2> Get Cookin'</h2>
 <%= form_with url: "/recipes/:recipe_id/cook", method: :post, local: true do |form| %>
-  <%= form.label "How many servings do you wnat to cook?" %>
+  <%= form.label "How many servings do you want to cook?" %>
   <%= form.radio_button :one_serving, "One" %>
   <%= form.radio_button :two_serving, "Two" %>
   <%= form.radio_button :half_serving, "Half" %>
-  <% @recipe.%>
-  <%= form. %>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <%= form.label :ingredient, "Save from waste bin#{ingredient[:name]}" %>
+    <%= form.check_box :saved %>
+    <%= form.hidden_field :ingredient, value: ingredient %>
+  <% end %>
+<% end %>

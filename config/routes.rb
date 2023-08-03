@@ -10,5 +10,5 @@ Rails.application.routes.draw do
     resources :recipes, only: [:show, :new, :create]
   end
   resources :recipes, only: [:new, :show]
-  get "/recipes/:recipe_id/cook", to: "recipes#cook"
+  get "/recipes/:id/cook", to: "recipes#cook"
 end

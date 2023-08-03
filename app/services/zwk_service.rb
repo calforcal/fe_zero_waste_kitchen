@@ -34,12 +34,12 @@ class ZwkService
   end
 
   def conn_post
-    Faraday.new(url: "http://localhost:3000/api/v1/") do |faraday|
+    Faraday.new(url: "http://localhost:5000/api/v1/") do |faraday|
       faraday.headers['Content-Type: '] = 'application/json'
     end
   end
 
   def conn
-    Faraday.new(url: "http://localhost:3000/api/v1/")
+    Faraday.new(url: "http://localhost:5000/api/v1/")
   end
 end
