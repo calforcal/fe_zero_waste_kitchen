@@ -13,10 +13,8 @@
   <% @recipe.ingredients.each do |ingredient| %>
     <li>
       <%= form.label "#{ingredient.name}" %>
-      
-      <%# <%= form.check_box "ingredient_#{ingredient.name}".to_sym, {}, ingredient.id %>
+      <%= form.check_box :ingredients, { multiple: true }, ingredient.id %>
     </li>
   <% end %>
-  <%# <%= form.collection_check_boxes :saved_ingredients, @recipe.ingredients, :id, :name, :unit_type, :units %> 
   <%= form.submit %>
 <% end %>
