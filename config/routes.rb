@@ -12,4 +12,5 @@ Rails.application.routes.draw do
   resources :recipes, only: [:new, :show]
 
   post "/users/:user_id/recipes", to: "recipes#create"
+  get "/recipes/:id/cook", to: "recipes#cook"
 end
