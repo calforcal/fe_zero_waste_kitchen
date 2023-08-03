@@ -9,6 +9,13 @@ class RecipesController < ApplicationController
   def show
     @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
   end
+  
+  def cook
+    @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
+    if params[:cooked]
+      ZwkService.new.save_ingredients(params)
+    end
+  end
 
 private
   def find_recipe_owner

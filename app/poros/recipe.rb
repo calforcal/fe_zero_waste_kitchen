@@ -21,5 +21,6 @@ class Recipe
     @source_url = data [:source_url]
     @user_submitted = data[:user_submitted]
     @api_id = data[:api_id]
+    @ingredients = data[:ingredients]
   end
 end
