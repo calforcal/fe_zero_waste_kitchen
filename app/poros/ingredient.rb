@@ -1,5 +1,5 @@
 class Ingredient
-   attr_reader :id,
+   attr_accessor :id,
                :name,
                :unit_type,
                :units

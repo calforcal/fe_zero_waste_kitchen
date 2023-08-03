@@ -41,13 +41,11 @@ RSpec.describe Recipe do
     end
 
     it "#cook" do 
-      expected = [
-        {:ingredient_name=>"Chicken", :units=>1.0, :unit_type=>"lbs"},
-        {:ingredient_name=>"ground beef", :units=>1.0, :unit_type=>"lbs"},
-        {:ingredient_name=>"Cheese", :units=>0.25, :unit_type=>"lbs"}
-      ]
+      @recipe_1.cook("0.5")
 
-      expect(@recipe_1.cook("0.5")).to eq(expected)
+      expect(@recipe_1.ingredients[0].units).to eq(1.0)
+      expect(@recipe_1.ingredients[2].units).to eq(0.25)
+      expect(@recipe_1.ingredients[1].units).to eq(1.0)
     end
   end
 end
