@@ -26,7 +26,7 @@ class Recipe
   end
 
   def cook(serving)
-    things = ingredients.map do |ingredient|
+    ingredients.map do |ingredient|
       ingr = Hash.new
       ingr[:ingredient_name] = ingredient.name
       ingr[:units] = ingredient.units * serving.to_f
