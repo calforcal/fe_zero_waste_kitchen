@@ -15,6 +15,7 @@ class Recipe
     @name = data[:name]
     @id = data[:id].to_i
     @instructions = data[:instructions]
+    @ingredients = data[:ingredients]
     @image_url = data[:image_url]
     @cook_time = data[:cook_time]
     @public_status = data[:public_status]
