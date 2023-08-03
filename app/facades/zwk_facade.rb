@@ -51,7 +51,6 @@ class ZwkFacade
   end
 
   def recipe_show
-    #  require 'pry'; binding.pry
     service.get_recipe_info(@recipe_id)
   end
 end
