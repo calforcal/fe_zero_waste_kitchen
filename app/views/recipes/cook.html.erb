@@ -1,6 +1,6 @@
-<h2> Get Cookin'</h2>
 
-<%= @recipe.name %>
+
+<h3><%= @recipe.name %></h3>
 
 <% if !@new_recipe %>
   <%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
@@ -22,15 +22,15 @@
     <% end %>
     <%= form.submit %>
   <% end %>
-<% end %>
+<% end %><br><br>
 
-<% if @new_recipe %>
-  <% @new_recipe.ingredients.each do |ingredient| %>
-    <%= ingredient.name %>
-    <%= ingredient.units %>
-    <%= ingredient.unit_type %><br><br>
-  <% end %>
-  <% @new_recipe.instructions.each do |instruction| %>
-    <%= instruction %><br>
-  <% end %>
+<h3> Ingredients </h3>
+<% @recipe.ingredients.each do |ingredient| %>
+  <%= ingredient.name %>
+  <%= ingredient.units %>
+  <%= ingredient.unit_type %><br><br>
+<% end %>
+<h3> Instructions </h3>
+<% @recipe.instructions.each do |instruction| %>
+  <%= instruction %><br><br>
 <% end %>
