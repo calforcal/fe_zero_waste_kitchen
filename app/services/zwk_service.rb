@@ -16,9 +16,18 @@ class ZwkService
     get_url("recipes/#{recipe_id}")
   end
 
+  def post_save_recipe(user_uid, recipe_id, data)
+    post_url("recipes/#{user_uid}/recipes/#{recipe_id}", data)
+  end
+
   def get_url(url)
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
+  end
+
+  def post_url(url, data = {})
+    response = conn.post(url)
+    JSON.parse(response.body, symbolize_names: true, params: data)
   end
 
   def conn
