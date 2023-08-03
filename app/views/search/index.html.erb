@@ -1,11 +1,9 @@
-<!-- Your search form -->
 <div class="d-flex align-items-center pt-1">
-  <div class="container pt-1">
+  <div class="container-fluid pt-1">
     <div class="card mb-2">
       <div class="card-body p-2">
-        <!-- Remove the search button from here -->
         <div class="input-group input-group-lg">
-          <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Names"
+          <input type="text" class="form-control form-control-lg rounded" placeholder="Search by recipe names"
             aria-label="Type Keywords" aria-describedby="basic-addon2" id="recipeNameInput" />
           <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
           <button type="button" class="btn btn-success" id="nameSearchButton">Search</button>
@@ -19,11 +17,10 @@
   <div class="container pt-1">
     <div class="card mb-2">
       <div class="card-body p-2">
-        <!-- Remove the search button from here -->
         <div class="input-group input-group-lg">
-          <input type="text" class="form-control form-control-lg rounded" placeholder="Recipe Ingredients"
+          <input type="text" class="form-control form-control-md rounded" placeholder="Search by ingredients"
             aria-label="Type Ingredients" aria-describedby="basic-addon2" id="recipeIngredientsInput" />
-          <span class="input-group-text border-0" id="basic-addon2"><i class="fas fa-search"></i></span>
+          <span class="input-group-text border-1" id="basic-addon2"><i class="fas fa-search"></i></span>
           <button type="button" class="btn btn-success" id="ingredientsSearchButton">Search</button>
         </div>
       </div>
@@ -37,10 +34,10 @@
       <div class="card-body p-2">
         <div id="results">
           <% if @recipes %>
-            <h2>Search Results:</h2> 
+            <h2>Search Results:</h2>
             <ul>
               <% @recipes[0..9].each do |recipe| %>
-              <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+              <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
             <% end %>
             </ul>
           <% elsif (params[:search] || params[:ingredients]) && !@recipes %>
