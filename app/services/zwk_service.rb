@@ -29,6 +29,7 @@ class ZwkService
   end
 
   def save_recipe(uid, recipe, data)
+    require 'pry'; binding.pry
     recipe_params = {
       uid: uid,
       recipe_id: recipe.id,
@@ -37,7 +38,6 @@ class ZwkService
       saved_status: data[:saved_status],
       num_stars: data[:num_stars]
     }
-
     conn_post.post "recipes/#{recipe.id}" do |req|
       req.body = JSON.generate(recipe_params)
     end

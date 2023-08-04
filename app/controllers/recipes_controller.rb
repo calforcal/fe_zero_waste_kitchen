@@ -25,6 +25,7 @@ class RecipesController < ApplicationController
           ingredients << ingredient
         end
       end
+      ZwkService.new.save_recipe(current_user.uid, @recipe, cook_status: "true")
       ZwkService.new.save_ingredients(ingredients, current_user.uid)
     end
   end
