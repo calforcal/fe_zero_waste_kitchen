@@ -1,36 +1,50 @@
+<h3 class="title-text text-center pt-5"><%= @recipe.name %></h3>
 
+<div class="form.group">
+  <% if !@new_recipe %>
+    <%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
+      <h5 class="title-text" ><%= form.label "How many servings do you want to cook?" %></h4><br>
+      <div class="card text-white bg-success mb-3" style="max-width: 10rem;">
+        <p><%= form.label :one_serving, "One Serving" %>
+        <%= form.radio_button :serving, "1" %></p>
 
-<h3><%= @recipe.name %></h3>
+        <p><%= form.label :two_serving, "Two Servings" %>
+        <%= form.radio_button :serving, "2" %></p>
 
-<% if !@new_recipe %>
-  <%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
-    <%= form.label "How many servings do you want to cook?" %><br>
-    <%= form.label :one_serving, "One Serving" %><br>
-    <%= form.radio_button :serving, "1" %><br>
-    <%= form.label :two_serving, "Two Servings" %><br>
-    <%= form.radio_button :serving, "2" %><br>
-    <%= form.label :half_serving, "Half Serving" %><br>
-    <%= form.radio_button :serving, "0.5" %><br>
-    <%= form.hidden_field :cooked, value: true %>
-    <%= form.hidden_field :id, value: @recipe.id %>
-    <%= form.label "Save from waste bin:" %>
-    <% @recipe.ingredients.each do |ingredient| %>
-      <li>
-        <%= form.label "#{ingredient.name}" %>
-        <%= form.check_box :ingredients, { multiple: true }, ingredient.id %>
-      </li>
+        <p><%= form.label :half_serving, "Half Serving" %>
+        <%= form.radio_button :serving, "0.5" %></p>
+
+        <%= form.hidden_field :cooked, value: true %>
+        <%= form.hidden_field :id, value: @recipe.id %>
+      </div>
+        <h5 class="title-text" ><%= form.label "Save from waste bin:" %></h5>
+        <div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+          <% @recipe.ingredients.each do |ingredient| %>
+            <p><%= form.label "#{ingredient.name}" %>
+            <%= form.check_box :ingredients, { multiple: true }, ingredient.id %></p>
+          <% end %>
+        </div>
+          <button type="submit" class="btn btn-success">Save</button>
     <% end %>
-    <%= form.submit %>
-  <% end %>
-<% end %><br><br>
+  <% end %><br><br>
+</div>
 
-<h3> Ingredients </h3>
-<% @recipe.ingredients.each do |ingredient| %>
-  <%= ingredient.name %>
-  <%= ingredient.units %>
-  <%= ingredient.unit_type %><br><br>
-<% end %>
-<h3> Instructions </h3>
-<% @recipe.instructions.each do |instruction| %>
-  <%= instruction %><br><br>
-<% end %>
+<h3 class="title-text"> Ingredients: </h3>
+<div class="card text-white bg-success mb-3" style="max-width: 20rem;">
+  <ul>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %>
+      <%= ingredient.units %>
+      <%= ingredient.unit_type %></li>
+    <% end %>
+  </ul>
+</div>
+
+<h3 class="title-text"> Instructions: </h3>
+<div class="card text-white bg-success mb-3" style="max-width: 51rem;">
+  <ol>
+    <% @recipe.instructions.each do |instruction| %>
+      <li><%= instruction %></li><hr>
+    <% end %>
+  </ol>
+</div>
