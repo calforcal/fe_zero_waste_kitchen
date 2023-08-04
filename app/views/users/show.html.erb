@@ -4,8 +4,8 @@
 </div>
 
 <div class="user_stats">
-  <h2 class="text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
-  <h2 class="text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
+  <h2 class="title-text text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
+  <h2 class="title-text text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
 </div>
 
 <div class="container btn-group-toggle text-center">
@@ -13,6 +13,19 @@
   <%#= #link_to "Make your own Recipe", new_user_recipe_path(@user.id), class: "btn btn-success btn-sm mt-2" %>
 </div><br>
 
+<div class="container-fluid cookbook-title ">
+  <h2 class="title-text text-center"><%= @user.name %>'s Cookbook</h2>
+</div>
+
+<div class="container-fluid recipes_saved text-center">
+  <div class="btn-group">
+     <button class="btn btn-success dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="false"
+                    aria-expanded="false">
+      Saved Recipes
+     </button>
 <div class="container-fluid cookbook-title">
   <h2 class="text-center"><%= @user.name %>'s Cookbook</h2>
 </div>
@@ -20,35 +33,41 @@
 <div class="container-fluid recipes_saved text-center">
   <div class="dropdown">
     <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Saved Recipes
-      <span class="caret"></span>
-    </button>
 
-    <ul class="dropdown-menu">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <% @facade.saved_recipes.each do |recipe| %>
-        <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+        <a class="text-success dropdown-item" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>
+
+<div class="container-fluid recipes_cooked text-center pt-3">
+  <div class="btn-group">
+    <button class="btn btn-success dropdown-toggle"
+                    type="button"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="false"
+                    aria-expanded="false">
+      Cooked Recipes
+     </button>
 <br>
 <br>
 <div class="container-fluid recipes_cooked text-center">
   <div class="dropdown cooked">
     <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cooked Recipes
-      <span class="caret"></span>
-    </button>
 
-    <ul class="dropdown-menu cooked">
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
       <% @facade.cooked_recipes.each do |recipe| %>
-        <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+        <a class="text-success dropdown-item" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a>
       <% end %>
-    </ul>
+    </div>
   </div>
 </div>
 <br>
 <br>
 <div class="container btn-group-toggle text-center">
-  <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-success btn-sm mt-2" %>
+  <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-success btn-sm mt-5 pd-5" %>
 </div>
 
 
