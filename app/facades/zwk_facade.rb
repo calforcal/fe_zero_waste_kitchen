@@ -67,4 +67,12 @@ class ZwkFacade
               end
               )
   end
+
+  def is_saved_recipe(recipe_id)
+    saved = []
+    saved_recipes.each do |recipe|
+      saved << recipe.id
+    end
+    saved.include?(recipe_id)
+  end
 end

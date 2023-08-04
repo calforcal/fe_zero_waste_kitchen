@@ -5,16 +5,16 @@ class RecipesController < ApplicationController
   def new; end
 
   def create
-
-    #  require 'pry'; binding.pry
-     ZwkService.new.post_url(url, params)
+    @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
+    ZwkService.new.save_recipe(current_user.uid, @recipe, params)
+    redirect_to recipe_path(@recipe.id)
   end
 
   def show
     @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
     @facade = ZwkFacade.new(recipe_id: params[:id], id: current_user.id)
   end
-  
+
   def cook
     @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
     if params[:cooked]
@@ -25,7 +25,7 @@ class RecipesController < ApplicationController
           ingredients << ingredient
         end
       end
-      ZwkService.new.save_ingredients(ingredients, @new_recipe.id, current_user.uid)
+      ZwkService.new.save_ingredients(ingredients, current_user.uid)
     end
   end
 

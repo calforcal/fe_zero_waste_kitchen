@@ -27,7 +27,23 @@ class ZwkService
     response = conn.get(url)
     JSON.parse(response.body, symbolize_names: true)
   end
-  def save_ingredients(params, recipe_id, uid)
+
+  def save_recipe(uid, recipe, data)
+    recipe_params = {
+      uid: uid,
+      recipe_id: recipe.id,
+      api_id: recipe.api_id,
+      cook_status: data[:cook_status],
+      saved_status: data[:saved_status],
+      num_stars: data[:num_stars]
+    }
+
+    conn_post.post "recipes/#{recipe.id}" do |req|
+      req.body = JSON.generate(recipe_params)
+    end
+  end
+
+  def save_ingredients(params, uid)
     ingredient_hashes = []
     params.each do |ingredient|
       ingr = Hash.new
