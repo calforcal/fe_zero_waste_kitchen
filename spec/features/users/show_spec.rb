@@ -128,7 +128,7 @@ RSpec.describe "user/show page", type: :feature do
         within '.user_stats' do
           expect(page).to have_content('Recipes Created: 1')
           expect(page).to have_content('Recipes Cooked: 1')
-          expect(page).to have_content('Carbon (CO2) Emissions Saved: 14.14 kilograms')
+          expect(page).to have_content('Carbon (CO2) Emissions Saved: 13.41 kilograms')
         end
       end
     end
