@@ -81,51 +81,51 @@ To run the full test suite:
 
 ### Home Page
 
-![](www.github.com/zero_waste_kitchen/fe_zero_waste_kitchen/blob/main/app/images/homepage.png)
+![image](/app/images/homepage.png)
 
 ### Register / Google Pre-Login
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/pre-login.png)
+![](/app/images/pre-login.png)
 
 ### Google Login
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/google_oauth_login.png)
+![](/app/images/google_oauth_login.png)
 
 ### User Dashboard
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/user_dashboard.png)
+![](/app/images/user_dashboard.png)
 
 ### Recipe Search
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/pre_recipe_search.png)
+![](/app/images/pre_recipe_search.png)
 
 ### Recipe Search Results
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/post_search.png)
+![](/app/images/post_search.png)
 
 ### Recipe Show Page
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/recipe_show.png)
+![](/app/images/recipe_show.png)
 
 ### Recipe Cook Page
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/cook_recipe_page.png)
+![](/app/images/cook_recipe_page.png)
 
 ### Recipe Post Cook
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/post_cooked_recipe_page.png)
+![](/app/images/post_cooked_recipe_page.png)
 
 ### Recipe Saved
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/recipe_show_saved.png)
+![](/app/images/recipe_show_saved.png)
 
 ### Recipe Saved Dropdown
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/recipe_show_saved.png)
+![](/app/images/recipe_show_saved.png)
 
 ### Recipe Cooked Dropdown
 
-![](www.github.com/calforcal/fe_zero_waste_kitchen/blob/main/app/images/recipe_show.png)
+![](/app/images/recipe_show.png)
 
 ## ZWK JSON Contract
 
