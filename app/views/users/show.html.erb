@@ -4,20 +4,23 @@
 </div>
 
 <div class="user_stats">
+  <h2 class="text-center">Recipes Created: <%= @facade.user_stats.first %></h2>
   <h2 class="text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
   <h2 class="text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
 </div>
 
 <div class="container btn-group-toggle text-center">
   <%= link_to "Search Recipes", search_index_path, class: "btn btn-success btn-sm mt-2" %><br>
-  <%#= #link_to "Make your own Recipe", new_user_recipe_path(@user.id), class: "btn btn-success btn-sm mt-2" %>
+  <%# <%= link_to "Make your own Recipe", new_user_recipe_path(@user.id), class: "btn btn-success btn-sm mt-2" %>
 </div><br>
 
-<div class="container-fluid cookbook-title">
+<div class="container-fluid cookbook-title ">
   <h2 class="text-center"><%= @user.name %>'s Cookbook</h2>
 </div>
 
-<div class="container-fluid recipes_saved text-center">
+<div class="container-fluid recipes_saved">
+  <h2 class="text-center">Saved Recipes</h2>
+
   <div class="dropdown">
     <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Saved Recipes
       <span class="caret"></span>
@@ -30,9 +33,26 @@
     </ul>
   </div>
 </div>
-<br>
-<br>
-<div class="container-fluid recipes_cooked text-center">
+
+<div class="container-fluid recipes_created">
+  <h2 class="text-center">Created Recipes</h2>
+
+  <div class="dropdown created">
+    <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Created Recipes
+      <span class="caret"></span>
+    </button>
+
+    <ul class="dropdown-menu created">
+      <% @facade.created_recipes.each do |recipe| %>
+        <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+
+<div class="container-fluid recipes_cooked">
+  <h2 class="text-center">Cooked Recipes</h2>
+
   <div class="dropdown cooked">
     <button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown">Cooked Recipes
       <span class="caret"></span>
@@ -45,8 +65,7 @@
     </ul>
   </div>
 </div>
-<br>
-<br>
+
 <div class="container btn-group-toggle text-center">
   <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "btn btn-success btn-sm mt-2" %>
 </div>
@@ -60,6 +79,15 @@
   dropdown_button.addEventListener("click", openDropdown)
   function openDropdown() {
   dropdown_menu.style.display = "block"
+  ;}
+
+  const dropdown_button_created = document.querySelector('.dropdown.created');
+  const dropdown_menu_created = document.querySelector('.dropdown-menu.created');
+
+  console.log(dropdown_button_created)
+  dropdown_button_created.addEventListener("click", openDropdownCreated)
+  function openDropdownCreated() {
+  dropdown_menu_created.style.display = "block"
   ;}
 
   const dropdown_button_cooked = document.querySelector('.dropdown.cooked');
