@@ -37,7 +37,6 @@ class ZwkService
       saved_status: data[:saved_status],
       num_stars: data[:num_stars]
     }
-
     conn_post.post "recipes/#{recipe.id}" do |req|
       req.body = JSON.generate(recipe_params)
     end

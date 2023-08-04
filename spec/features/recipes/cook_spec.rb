@@ -25,7 +25,7 @@ RSpec.describe "Cook a Recipe", type: :feature do
       end
     end
     
-    xit "on submit it calculates servings and send saved ingredients" do
+    xit "on submit it calculates servings and send saved ingredients", :vcr do
       VCR.use_cassette('Cook_a_Recipe/cook_a_recipe_page/on_submit_it_calculates_servings_and_send_saved_ingredients', match_requests_on: [:path]) do
         user = FactoryBot.create(:user)
         allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
@@ -40,6 +40,10 @@ RSpec.describe "Cook a Recipe", type: :feature do
         expect(page).to have_content("Chicken 4.0 lbs")
         expect(page).to have_content("Cheese 1.0 lbs")
         expect(page).to have_content("eggs 4.0 oz")
+
+        click_link "Kitchen" 
+        expect(current_path).to eq("users/#{user.id}")
+        expect(page).to have_content("Recipes Cooked: 1")
       end
     end
   end
