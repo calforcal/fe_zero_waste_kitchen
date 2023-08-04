@@ -11,7 +11,7 @@
 
 <div class="container btn-group-toggle text-center">
   <%= link_to "Search Recipes", search_index_path, class: "btn btn-success btn-sm mt-2" %><br>
-  <%= link_to "Make your own Recipe", new_user_recipe_path(@user.id), class: "btn btn-success btn-sm mt-2" %>
+  <%# <%= link_to "Make your own Recipe", new_user_recipe_path(@user.id), class: "btn btn-success btn-sm mt-2" %>
 </div><br>
 
 <div class="container-fluid cookbook-title ">
@@ -28,7 +28,7 @@
 
     <ul class="dropdown-menu">
       <% @facade.saved_recipes.each do |recipe| %>
-        <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+        <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
       <% end %>
     </ul>
   </div>
@@ -44,7 +44,7 @@
 
     <ul class="dropdown-menu created">
       <% @facade.created_recipes.each do |recipe| %>
-        <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+        <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
       <% end %>
     </ul>
   </div>
@@ -60,7 +60,7 @@
 
     <ul class="dropdown-menu cooked">
       <% @facade.cooked_recipes.each do |recipe| %>
-        <li><a href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
+        <li><a class="text-success" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a></li>
       <% end %>
     </ul>
   </div>
