@@ -12,7 +12,9 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = ZwkFacade.new(recipe_id: params[:id]).recipe_show
-    @facade = ZwkFacade.new(recipe_id: params[:id], id: current_user.id)
+    if current_user
+      @facade = ZwkFacade.new(recipe_id: params[:id], id: current_user.id)
+    end
   end
 
   def cook
