@@ -1,11 +1,29 @@
-<h1 class="title-text text-center pt-5"> <%= @recipe[:data][:attributes][:name] %> </h1>
-<h6 class="text-center text-white">Cook Time: <%= @recipe[:data][:attributes][:cook_time] %>mins</h6>
+  <h1 class="title-text text-center pt-5"> <%= @recipe.name %> </h1>
+  <h6 class="text-center text-white">Cook Time: <%= @recipe.cook_time %>mins</h6>
+  <div class="image text-center">
+    <% if !@recipe.image_url.nil? %>
+      <img src="<%= @recipe.image_url %>" class="img-fluid img-thumbnail">
+    <% end %>
+  </div>
+
+<div class="container btn-group-toggle text-center">
+
+  <% if current_user %>
+    <% if @facade.is_saved_recipe(@recipe.id) %>
+      <%= link_to "Cook This Recipe", "/recipes/#{@recipe.id}/cook", class: "btn btn-success btn-sm mt-2" %>
+      <%= button_to "Unsave This Recipe", "/users/#{current_user.id}/recipes/#{@recipe.id}", method: :post, params: { saved_status: "false" }, class: "btn btn-success btn-sm mt-2" %>
+    <% else %>
+      <%= link_to "Cook This Recipe", "/recipes/#{@recipe.id}/cook", class: "btn btn-success btn-sm mt-2" %>
+      <%= button_to "Save This Recipe", "/users/#{current_user.id}/recipes/#{@recipe.id}", method: :post, params: { saved_status: "true" }, class: "btn btn-success btn-sm mt-2" %>
+    <% end %>
+  <% end %>
+</div>
 
 <h3 class="title-text">Ingredients: </h3>
 <div class="card text-white bg-success mb-3" style="max-width: 15rem;">
   <ul>
-    <% @recipe[:data][:attributes][:ingredients].each do |ingredient| %>
-      <li><%= ingredient[:name] %></li>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li><%= ingredient.name %></li>
     <% end %>
   </ul>
 </div>
@@ -13,8 +31,13 @@
 <h3 class="title-text">Instructions: </h3>
 <div class="card text-white bg-success mb-3" style="max-width: 50rem;">
   <ol>
-    <% @recipe[:data][:attributes][:instructions].each do |instruction| %>
+    <% @recipe.instructions.each do |instruction| %>
       <li><%= instruction %></li><hr>
     <% end %>
   </ol>
+</div>
+
+<div class="container group text-center">
+  <p class="border border-success text-white"><%= @recipe.source_name %></p>
+  <p class="border border-success text-success"><%= link_to  @recipe.source_url, @recipe.source_url %> </p>
 </div>

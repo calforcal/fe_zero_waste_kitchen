@@ -51,6 +51,28 @@ class ZwkFacade
   end
 
   def recipe_show
-    service.get_recipe_info(@recipe_id)
+    recipe = service.get_recipe_info(@recipe_id)
+    Recipe.new(id: recipe[:data][:id],
+              name: recipe[:data][:attributes][:name],
+              instructions: recipe[:data][:attributes][:instructions],
+              image_url: recipe[:data][:attributes][:image_url],
+              cook_time: recipe[:data][:attributes][:cook_time],
+              public_status: recipe[:data][:attributes][:public_status],
+              source_name: recipe[:data][:attributes][:source_name],
+              source_url: recipe[:data][:attributes][:source_url],
+              user_submitted: recipe[:data][:attributes][:user_submitted],
+              api_id: recipe[:data][:attributes][:api_id],
+              ingredients: recipe[:data][:attributes][:ingredients].map do |ingredient|
+                Ingredient.new(ingredient)
+              end
+              )
+  end
+
+  def is_saved_recipe(recipe_id)
+    saved = []
+    saved_recipes.each do |recipe|
+      saved << recipe.id
+    end
+    saved.include?(recipe_id)
   end
 end

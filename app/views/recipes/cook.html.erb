@@ -1,0 +1,36 @@
+
+
+<h3><%= @recipe.name %></h3>
+
+<% if !@new_recipe %>
+  <%= form_with url: "/recipes/#{@recipe.id}/cook", method: :get, local: true do |form| %>
+    <%= form.label "How many servings do you want to cook?" %><br>
+    <%= form.label :one_serving, "One Serving" %><br>
+    <%= form.radio_button :serving, "1" %><br>
+    <%= form.label :two_serving, "Two Servings" %><br>
+    <%= form.radio_button :serving, "2" %><br>
+    <%= form.label :half_serving, "Half Serving" %><br>
+    <%= form.radio_button :serving, "0.5" %><br>
+    <%= form.hidden_field :cooked, value: true %>
+    <%= form.hidden_field :id, value: @recipe.id %>
+    <%= form.label "Save from waste bin:" %>
+    <% @recipe.ingredients.each do |ingredient| %>
+      <li>
+        <%= form.label "#{ingredient.name}" %>
+        <%= form.check_box :ingredients, { multiple: true }, ingredient.id %>
+      </li>
+    <% end %>
+    <%= form.submit %>
+  <% end %>
+<% end %><br><br>
+
+<h3> Ingredients </h3>
+<% @recipe.ingredients.each do |ingredient| %>
+  <%= ingredient.name %>
+  <%= ingredient.units %>
+  <%= ingredient.unit_type %><br><br>
+<% end %>
+<h3> Instructions </h3>
+<% @recipe.instructions.each do |instruction| %>
+  <%= instruction %><br><br>
+<% end %>
