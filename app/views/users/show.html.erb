@@ -4,9 +4,8 @@
 </div>
 
 <div class="user_stats">
-  <h2 class="text-center">Recipes Created: <%= @facade.user_stats.first %></h2>
-  <h2 class="text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
-  <h2 class="text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
+  <h2 class="title-text text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
+  <h2 class="title-text text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
 </div>
 
 <div class="container btn-group-toggle text-center">
@@ -79,15 +78,6 @@
   dropdown_button.addEventListener("click", openDropdown)
   function openDropdown() {
   dropdown_menu.style.display = "block"
-  ;}
-
-  const dropdown_button_created = document.querySelector('.dropdown.created');
-  const dropdown_menu_created = document.querySelector('.dropdown-menu.created');
-
-  console.log(dropdown_button_created)
-  dropdown_button_created.addEventListener("click", openDropdownCreated)
-  function openDropdownCreated() {
-  dropdown_menu_created.style.display = "block"
   ;}
 
   const dropdown_button_cooked = document.querySelector('.dropdown.cooked');
