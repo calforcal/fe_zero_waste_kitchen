@@ -61,14 +61,14 @@ class ZwkService
   end
 
   def conn_post
-    Faraday.new(url: "https://fe-zero-waste-kitchen.onrender.com/api/v1/") do |faraday|
+    Faraday.new(url: "https://be-zero-waste-kitchen.onrender.com/api/v1/") do |faraday|
       faraday.headers['Content-Type'] = 'application/json'
       faraday.params['zwk_api_key'] = ENV['ZWK_API_KEY']
     end
   end
 
   def conn
-    Faraday.new(url: "https://fe-zero-waste-kitchen.onrender.com/api/v1/") do |faraday|
+    Faraday.new(url: "https://be-zero-waste-kitchen.onrender.com/api/v1/") do |faraday|
       faraday.params['zwk_api_key'] = ENV['ZWK_API_KEY']
     end
   end
