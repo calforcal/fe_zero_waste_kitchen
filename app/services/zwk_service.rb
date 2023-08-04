@@ -29,7 +29,6 @@ class ZwkService
   end
 
   def save_recipe(uid, recipe, data)
-    require 'pry'; binding.pry
     recipe_params = {
       uid: uid,
       recipe_id: recipe.id,
