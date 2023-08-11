@@ -1,4 +1,4 @@
-class Recipe
+class BeRecipe
   attr_reader :id,
               :name,
               :instructions,

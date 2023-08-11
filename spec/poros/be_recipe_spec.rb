@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Recipe do
+RSpec.describe BeRecipe do
   describe "#initialize" do 
     it "exists and has attributes" do 
       attrs = { 
@@ -15,9 +15,9 @@ RSpec.describe Recipe do
         api_id: "10"
         }
     
-      recipe = Recipe.new(attrs)
+      recipe = BeRecipe.new(attrs)
     
-      expect(recipe).to be_a(Recipe)
+      expect(recipe).to be_a(BeRecipe)
     
       expect(recipe.name).to eq("Chicky Parm")
       expect(recipe.instructions).to eq(["1. Turn on oven, 2. Mix all together, 3. Put in Oven, 4. Take out and enjoy"])
@@ -37,7 +37,7 @@ RSpec.describe Recipe do
       @cheese = Ingredient.new(name: 'Cheese', units: 0.5, unit_type: 'lbs')
       @ground_beef = Ingredient.new(name: 'ground beef', units: 2.0, unit_type: 'lbs')
       ingredients = [@chicken, @ground_beef, @cheese]
-      @recipe_1 = Recipe.new(name: 'Chicken Parm', api_id: "646660", ingredients: ingredients, instructions: "1. Cook the chicken,2. Cover in sauce and cheese,3. Enjoy!", image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, image_url: "sweet_url", source_name: "name", source_url: "/api/v1/users/userid")
+      @recipe_1 = BeRecipe.new(name: 'Chicken Parm', api_id: "646660", ingredients: ingredients, instructions: "1. Cook the chicken,2. Cover in sauce and cheese,3. Enjoy!", image_url: 'pic of my chicken parm', cook_time: 45, public_status: true, image_url: "sweet_url", source_name: "name", source_url: "/api/v1/users/userid")
     end
 
     it "#cook" do 

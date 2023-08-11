@@ -1,0 +1,120 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.api-ninjas.com/v1/nutrition?query=2.0%20lbs%20Chicken%200.5%20lbs%20Cheese%202.0%20lbs%20ground%20beef%202.0%20oz%20eggs%20
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      X-Api-Key:
+      - X-Api-Key
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json
+      Content-Length:
+      - '1058'
+      Connection:
+      - keep-alive
+      Date:
+      - Fri, 11 Aug 2023 19:54:02 GMT
+      X-Amzn-Requestid:
+      - 2502acc3-1f22-41da-ac67-f3a2fd629021
+      Access-Control-Allow-Origin:
+      - "*"
+      Allow:
+      - GET, OPTIONS, POST
+      Access-Control-Allow-Headers:
+      - "*"
+      X-Amz-Apigw-Id:
+      - Jgu6LFPPPHcFt8A=
+      Access-Control-Allow-Methods:
+      - GET, OPTIONS, POST
+      X-Amzn-Trace-Id:
+      - Root=1-64d691da-6632f52576c9abcf63c63b66;Sampled=0;lineage=6ae1048e:0
+      X-Cache:
+      - Miss from cloudfront
+      Via:
+      - 1.1 b8620ad7aedba28451ef92dbe52bd094.cloudfront.net (CloudFront)
+      X-Amz-Cf-Pop:
+      - DEN52-P1
+      X-Amz-Cf-Id:
+      - riqLrYMfb6jET_ZgEXhbUmvc0dBTNH2fZz5oT1BBEXXKpRPkqv1dGA==
+    body:
+      encoding: UTF-8
+      string: '[{"name": "chicken", "calories": 20197.6, "serving_size_g": 9071.84,
+        "fat_total_g": 1170.2, "fat_saturated_g": 331.7, "protein_g": 2152.8, "sodium_mg":
+        6557, "potassium_mg": 16251, "cholesterol_mg": 8357, "carbohydrates_total_g":
+        4.3, "fiber_g": 0.0, "sugar_g": 0.0}, {"name": "cheese", "calories": 8933.5,
+        "serving_size_g": 2267.96, "fat_total_g": 749.1, "fat_saturated_g": 429.2,
+        "protein_g": 515.9, "sodium_mg": 15008, "potassium_mg": 10431, "cholesterol_mg":
+        2271, "carbohydrates_total_g": 71.8, "fiber_g": 0.0, "sugar_g": 10.6}, {"name":
+        "ground beef", "calories": 25270.6, "serving_size_g": 9071.84, "fat_total_g":
+        1551.4, "fat_saturated_g": 587.8, "protein_g": 2470.2, "sodium_mg": 8342,
+        "potassium_mg": 20287, "cholesterol_mg": 8177, "carbohydrates_total_g": 0.0,
+        "fiber_g": 0.0, "sugar_g": 0.0}, {"name": "eggs", "calories": 818.2, "serving_size_g":
+        566.99, "fat_total_g": 53.1, "fat_saturated_g": 17.7, "protein_g": 71.4, "sodium_mg":
+        814, "potassium_mg": 1134, "cholesterol_mg": 2118, "carbohydrates_total_g":
+        4.1, "fiber_g": 0.0, "sugar_g": 2.1}]'
+  recorded_at: Fri, 11 Aug 2023 19:54:02 GMT
+- request:
+    method: post
+    uri: https://beta4.api.climatiq.io/estimate
+    body:
+      encoding: UTF-8
+      string: '{"emission_factor":{"activity_id":"waste_type_food_waste-disposal_method_landfilled","source":"EPA","region":"US","year":2022,"source_lca_activity":"end_of_life","data_version":"2.2"},"parameters":{"weight":20978.63,"weight_unit":"g"}}'
+    headers:
+      Authorization:
+      - Authorization
+      'Content-Type: ':
+      - application/json
+      User-Agent:
+      - Faraday v2.7.10
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '691'
+      Content-Type:
+      - application/json
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - private, s-maxage=0, max-age=600, must-revalidate
+      X-Content-Type-Options:
+      - nosniff
+      Content-Security-Policy:
+      - frame-ancestors 'none'
+      Strict-Transport-Security:
+      - max-age=3600
+      X-Served-By:
+      - cache-den8236-DEN
+      Date:
+      - Fri, 11 Aug 2023 19:54:02 GMT
+    body:
+      encoding: UTF-8
+      string: '{"co2e":13.412489059284663,"co2e_unit":"kg","co2e_calculation_method":"ar4","co2e_calculation_origin":"source","emission_factor":{"name":"Food
+        Waste - Landfilled","activity_id":"waste_type_food_waste-disposal_method_landfilled","id":"163972ef-d865-4bbe-ab3b-f8b2465cf825","access_type":"public","source":"EPA","source_dataset":"GHG
+        Emission Factors Hub","year":2022,"region":"US","category":"Food and Organic
+        Waste","source_lca_activity":"end_of_life","data_quality_flags":[]},"constituent_gases":{"co2e_total":13.412489059284663,"co2e_other":null,"co2":null,"ch4":null,"n2o":null},"activity_data":{"activity_value":0.023124981136697694,"activity_unit":"short
+        ton"},"audit_trail":"selector"}'
+  recorded_at: Fri, 11 Aug 2023 19:54:03 GMT
+recorded_with: VCR 6.2.0

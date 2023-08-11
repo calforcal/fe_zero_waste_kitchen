@@ -1,10 +1,11 @@
 class SearchController < ApplicationController
 
   def index
-    if params[:search]
-      @recipes = RecipeSearch.new(params).search_recipe_by_name
-    elsif params[:ingredients]
-      @recipes = RecipeSearch.new(params).search_recipes_by_ingredients
-    end
+    # if params[:search]
+    #   @recipes = RecipeSearch.new(params).search_recipe_by_name
+    # elsif params[:ingredients]
+    #   @recipes = RecipeSearch.new(params).search_recipes_by_ingredients
+    # end
+    @recipes = BeRecipeSearch.new(params).search
   end
 end

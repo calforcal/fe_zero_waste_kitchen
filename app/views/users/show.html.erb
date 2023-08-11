@@ -4,8 +4,8 @@
 </div>
 
 <div class="user_stats">
-  <h2 class="title-text text-center">Recipes Cooked: <%= @facade.user_stats.second %></h2>
-  <h2 class="title-text text-center">Carbon (CO2) Emissions Saved: <%= @facade.user_stats.third %> kilograms</h2>
+  <h2 class="title-text text-center">Recipes Cooked: <%= @user.user_stats[:recipes_cooked] %></h2>
+  <h2 class="title-text text-center">Carbon (CO2) Emissions Saved: <%= @user.user_stats[:kg_emissions_saved] %> kilograms</h2>
 </div>
 
 <div class="container btn-group-toggle text-center">
@@ -28,7 +28,7 @@
     </button>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <% @facade.saved_recipes.each do |recipe| %>
+      <% @user.recipes_saved.each do |recipe| %>
         <a class="text-success dropdown-item" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a>
       <% end %>
     </div>
@@ -46,7 +46,7 @@
     </button>
 
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <% @facade.cooked_recipes.each do |recipe| %>
+      <% @user.recipes_cooked.each do |recipe| %>
         <a class="text-success dropdown-item" href="<%= recipe_path(recipe.id) %>"><%= recipe.name %></a>
       <% end %>
   </div>

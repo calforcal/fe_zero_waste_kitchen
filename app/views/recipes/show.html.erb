@@ -9,7 +9,7 @@
 <div class="container btn-group-toggle text-center">
 
   <% if current_user %>
-    <% if @facade.is_saved_recipe(@recipe.id) %>
+    <% if current_user.is_saved_recipe(@recipe.id) %>
       <%= link_to "Cook This Recipe", "/recipes/#{@recipe.id}/cook", class: "btn btn-success btn-sm mt-2" %>
       <%= button_to "Unsave This Recipe", "/users/#{current_user.id}/recipes/#{@recipe.id}", method: :post, params: { saved_status: "false" }, class: "btn btn-success btn-sm mt-2" %>
     <% else %>
