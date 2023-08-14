@@ -54,6 +54,7 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "figaro"
+gem "faraday"
 
 # Use Bootstrap for CSS auto resizing
 gem 'bootstrap', '~> 5.3.0.alpha3'
