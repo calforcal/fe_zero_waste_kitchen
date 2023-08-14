@@ -377,7 +377,6 @@ DEPENDENCIES
   devise
   factory_bot_rails
   faker
-  faraday
   figaro
   importmap-rails
   jbuilder
